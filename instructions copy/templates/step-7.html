@@ -1,0 +1,46 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Search Feature</h2>
+
+				<p>In addition to these three great section automatically loaded for visitors, they should also be able to search for their own preferred dog videos using the search box at the top of the site.</p>
+				
+				<ul>
+					<li>Use jQuery's <code>keypress</code> method to attach an event listener to the search input. This will fire whenever a user presses a key while typing inside the search box</li>
+					<li>The keypress method will take an annonymous function and then pass through an <b>event</b> parameter to that function</li>
+					<li>The code to fire off a request to YouTube and deal with other search functionality should only happen when the user presses the "Enter" key, not just any key. Inside the annonymous function, create an <b>if</b> conditional and test for if <b>event.keyCode</b> is equal to 13. <i>Each key on a keyboard has a numeric code assigned to it. 13 represents the Enter key</i></li>
+					<li>Inside the conditional, prevent any default behavior from the browser (like submitting the form and having the page reload when we don't want it to), by preventing the default action on the event</li>
+				</ul>
+
+				<p>Let's start working on the searching functionality now</p>
+
+				<ul>
+					<li>Create a variable named query and set it equal to the value of the search input</li>
+					<li>Construct another AJAX request to YouTube's API. The type should be <b>video</b>, limit it to only 4 results, and set the <code>q</code> parameter equal to the concatenation of the <b>query</b> variable and t.he string <b>" dog"</b>. <i>Notice the space before the word dog</i></li>
+					<li>If the user searches for the term "Christmas", the search term sent to YouTube will be "Christmas Dog", ensuring DoggoTube remains all about those Doggos.</li>
+					<li>If the request was successful and data was returned, create the same &lt;li&gt; appended elements like the Corgi section on the unordered list inside the hidden search section on the page</li>
+					<li>After the append method, but still within the <code>done</code> function, set the value of the search box to be nothing (clear it out after the user searched)</li>
+					<li>Set the text value of the element with the id <b>search-text</b> equal to the query variable</li>
+					<li>Also use jQuery's <code>show</code> method to turn the <b>.search-results</b> section from display:none to display:block</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

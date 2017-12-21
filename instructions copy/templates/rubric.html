@@ -1,0 +1,36 @@
+<div class="page-center container text-center">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="display-4 text-center">Grading</h1>
+			<p>This lab is worth {{config.lab.points}} points</p>
+			
+			<table class="table table-bordered table-hover">
+				<thead class="thead-default">
+					<tr>
+						<th>Component</th>
+						<th>Points</th>
+					</tr>
+				</thead>
+				
+				<tbody ng-repeat="items in config.rubric">
+					<tr class="table-secondary">
+						<td colspan="2">{{items.category}}</td>
+					</tr>
+					<tr ng-repeat="component in items.components">
+						<td>{{component.title}}</td>
+						<td>{{component.points}}</td>
+					</tr>
+				</tbody>
+				
+				<tfoot>
+					<tr>
+						<td class="text-right"><strong>Total</strong></td>
+						<td>10</td>
+					</tr>
+				</tfoot>
+			</table>
+			
+			<a href="" class="btn btn-primary btn-lg" ng-click="vm.beginLab()">Begin</a>
+		</div>
+	</div>
+</div>

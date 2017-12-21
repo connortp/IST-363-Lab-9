@@ -1,0 +1,51 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Corgi Videos</h2>
+
+				<p>Start by populating the Corgi Videos section. An AJAX request will need to be send to YouTube's API and ask it for videos related to a Corgi query</p>				
+				
+				<ul>
+					<li>After the <b>key</b> variable, use jQuery's <b>AJAX</b> method to create a new AJAX request
+						<ul>
+							<li>The base url should be set to <code>https://www.googleapis.com/youtube/v3/search</code></li>
+							<li>Add a data property (that's an object) to pass in a set of parameters with the url</li>
+							<li>Add a <code>key</code> parameter and set it equal to the <b>key</b> variable</li>
+							<li>Add a <code>maxResults</code> parameter and set it equal to 8 <i>(Make 8 a string, instead of a normal number)</i></li>
+							<li>Add a <code>part</code> parameter and set it equal to <b>snippet</b>. <i>Snippet is a value used by YouTube's API to instruct it what type of information to send back. This can also include information about statistics, user information, etc. </i></li>
+							<li>Add a <code>type</code> parameter and set it equal to <b>video</b></li>
+							<li>Add a <code>q</code> paramter and set it to <b>Corgi</b>. Q stands for query; what search term we want to use when getting videos back from YouTube's API</li>
+						</ul>
+					</li>
+					<li>Chain a <code>done</code> method after the AJAX one. Pass through an annonymous function with a <b>response</b> parameter. This paramter can be named whatever you like. It will represent the response, or data, returned from YouTube.</li>
+					<li>Inside the done function, console out <b>response</b> to see what YouTube sent us back</li>
+				</ul>
+				
+				<div class="text-center">
+					<div class="code-hide relative">
+						<img src="/images/ajaxconsolelog.png" alt="" >
+						<button type="button" class="btn btn-large btn-secondary" ng-click="step.showImg($event)">Show Code</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

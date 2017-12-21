@@ -1,0 +1,47 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Husky Playlists and Daschund Channels</h2>
+
+				<p>Make similar AJAX calls and build out the list of data for the next two sections</p>
+
+				<h3 class="font-weight-normal">Husky Playlists</h3>
+				
+				<p>For the Husky Playlists sections:</p>
+				<ul>
+					<li>Set the <code>q</code> paramter to be <b>Husky</b></li>
+					<li>Set the <code>type</code> parameter to be <b>playlist</b></li>
+					<li>Append the markup to the unorder list with the class of <b>playlist-list</b></li>
+					<li>Point the &lt;a&gt; href to <b>https://youtube.com/playlist?list=</b> and then the id of the playlist</li>
+				</ul>
+
+				<h3 class="font-weight-normal">Dachshund Channels</h3>
+				
+				<p>For the Dachshund Channel sections:</p>
+				<ul>
+					<li>Set the <code>q</code> paramter to be <b>Dachshund</b></li>
+					<li>Set the <code>type</code> parameter to be <b>channel</b></li>
+					<li>Append the markup to the unorder list with the class of <b>channel-list</b></li>
+					<li>Point the &lt;a&gt; href to <b>https://youtube.com/channel/</b> and then the id of the channel</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

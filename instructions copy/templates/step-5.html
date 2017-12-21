@@ -1,0 +1,64 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Corgi Response</h2>
+
+				<p>In the console of your browser, you should see something similar to below. YouTube returned data in a JSON format. Clicking on the arrows will expand the objects. YouTube's API return a list of 8 Corgi-related videos to your webpage (inside the code. Inside each video's <code>snippet</code> object is information about that video: it's title, description, published date, image thumbnails, etc.</p>
+				
+
+				<div class="text-center">
+					<img src="/images/corgiresponse.png" alt="" />
+				</div>
+
+				<hr>
+
+				<p>Let's work with this data and use it to build out a list of these videos onto DoggoTube. </p>
+
+				<ul>
+					<li>After the console.log statement, use jQuery's <code>each</code> method to loop through the list of videos. To access properties of the JSON object, dot notation is used. Iterate over <b>response.items</b></li>
+					<li>The jQuery each method takes a second parameter that will be an annonymous function. Pass this function two paramters: <b>index</b> and <b>video</b></li>
+					<li>Inside this function, append an <code>&lt;li&gt;</code> to the unordered list that has the class <b>videos-list</b> inside the Corgi section
+						<ul>
+							<li>Add a custom <b>data-video-id</b> attribute on the &lt;li&gt; and give it a value of video.id.videoId (This will need to be outside of a string and will access this specific property on the JSON object you're working with)</li>
+							<li>Inside the list item, create an &lt;a&gt; tag with an href which is the concatenation of <b>"https://youtube.com/watch?v="</b> and the video id again</li>
+							<li>Inside the &lt;a&gt; tag, create an image whose src is equal to the url of the medium sized thumbnail for the video</li>
+							<li>After the image, but still within the link, create a &lt;div&gt; with the text <b>Video: </b> and then the title of the video</li>
+						</ul>
+					</li>
+				</ul>
+
+				<div class="text-center">
+					<div class="code-hide relative">
+						<img src="/images/videolisteach.png" alt="" >
+						<button type="button" class="btn btn-large btn-secondary" ng-click="step.showImg($event)">Show Code</button>
+					</div>
+				</div>
+
+				<hr>
+
+				<p>DoggoTube should now look like below:</p>
+
+				<div class="text-center">
+					<img src="/images/corgisection.png" alt="" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,100 @@
+$blue: #007bff;
+
+body {line-height:1.8;}
+img {max-width:100%;}
+
+.page-center {min-height:100vh; display:flex; align-items:center; justify-content:center;}
+.content-wrapper {height:calc(100vh - 66px); margin-top:66px; overflow:auto;}
+//#app {padding:20px 0;}
+.step-nav {position:fixed; top:0; left:0; width:100%; height:60px; padding:0 12px;
+	&-progress {
+		&__track {position:absolute; top:100%; left:0; width:100%; height:6px; background-color:#ccc;}
+		&__slider {height:6px; width:0%; background-color:$blue;}
+	}
+}
+
+
+//Terminal Component
+.terminal {background-color:#000; width:100%; max-width:800px; margin:0 auto; border:2px solid #f0f0f0; margin-bottom:24px; border-radius:4px;
+	.header {height:30px; line-height:30px; background-color:#f0f0f0; color:#000; padding:0 10px; display:flex; align-items:center; justify-content:space-between;
+		&-buttons {display:flex; align-items:center; color:#363636;}
+		&-button {margin-left:12px;}
+	}
+	
+	.body {color:#fff; height:400px; overflow:auto; padding:10px; font-family:Consolas, monospace;}
+	
+	&-cursor {animation:blink 1.4s infinite;}
+	&-tab {
+		$tab: 12px;
+		&-1 {margin-left:$tab*1;}
+		&-2 {margin-left:$tab*2;}
+		&-3 {margin-left:$tab*3;}
+		&-4 {margin-left:$tab*4;}
+	}
+	&-red {color:#800000;}
+	&-green {color:darkgreen;}
+}
+
+//Code Examples
+.code-hide {overflow:hidden; display:inline-block; margin:0 auto;
+	&:before {content:""; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);}
+	
+	img {-webkit-filter:blur(5px); filter:blur(5px);}
+	
+	.btn {position:absolute; top:50%; left:50%; -webkit-transform:translate(-50%,-50%); transform:translate(-50%,-50%);}
+	
+	&.unhide {
+		&:before {display:none;}
+		img {-webkit-filter:blur(0px); filter:blur(0px);}
+		.btn {display:none;}
+	}
+}
+
+//Utility Classes
+.display-4 {margin-bottom:1.5rem;}
+
+.margin-top-gutter {margin-top:12px;}
+.margin-right-gutter {margin-right:12px;}
+.margin-bottom-gutter {margin-bottom:12px;}
+.margin-left-gutter {margin-left:12px;}
+
+.relative {position: relative !important;}
+
+//Animations
+	@keyframes blink {
+		0% {opacity:0;}
+		10% {opacity:1;}
+		55% {opacity:1;}
+		65% {opacity:0;}
+		100% {opacity:0;}
+	}
+
+//Sizing
+	.width-0 {width:0%;}
+	.width-50 {width:50%;}
+	.width-100 {width:100%;}
+	.height-0 {height:0%;}
+	.height-50 {height:50%;}
+	.height-100 {height:100%;}
+
+//Flex Classes
+	.flex {display:flex;}
+	.flex-row {flex-direction:row;}
+	.flex-column {flex-direction:column;}
+
+	.flex-align-start {align-items:flex-start;}
+	.flex-align-end {align-items:flex-end;}
+	.flex-align-center {align-items:center;}
+	.flex-align-baseline {align-items:baseline;}
+	.flex-align-stretch {align-items: stretch;}
+
+	.flex-justify-start {justify-content:flex-start;}
+	.flex-justify-end {justify-content:flex-end;}
+	.flex-justify-center {justify-content:center;}
+	.flex-justify-between {justify-content:space-between;}
+	.flex-justify-around {justify-content:space-around;}
+
+	.flex-item-1 {flex:1 1 auto;}
+	.flex-item-2 {flex:2 1 auto;}
+	.flex-item-3 {flex:3 1 auto;}
+	.flex-item-4 {flex:4 1 auto;}
